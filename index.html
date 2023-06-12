@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Intro</title>
+    <style>
+      .btn {
+        padding: 10px 20px;
+        margin: 1rem;
+      }
+    </style>
+    <script>
+      const loadFile = () => {
+        fetch("/getfile")
+          .then((response) => {
+            return response.text();
+          })
+          .then((fileContents) => {
+            document.getElementById("content").textContent = fileContents;
+          })
+          .catch((error) => {
+            console.log("Error: ", error);
+          });
+      };
+    </script>
+  </head>
+  <body>
+    <button class="btn" onclick="loadFile()">Get User Introduction</button>
+
+    <div id="content"></div>
+  </body>
+</html>
